@@ -1,6 +1,7 @@
 \documentclass[a4paper,10pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
+\usepackage{float}
 
 \title{BSIP: Separating uterine EMG records using sample entropy }
 \author{Neža Belej (63120340)}
@@ -26,8 +27,34 @@ Uterine electromyogram (EMG), also termed electrohysterogram (EHG), represents e
 \item{The Butterworth filter is a type of signal processing filter designed to have as flat a frequency response as possible in the passband. It has a smooth frequency response
 and is computationally non intensive.\\ Filter can be high-pass, low-pass or band-pass. \\
 We used band-pass filter with bandpass between 0.3 - 4 Hz.}
+\begin{figure}[H]
 \includegraphics{butter}
+\end{figure}
 \end{itemize}
+
+\section {Graphs of input signals}
+\begin{figure}[H]
+\includegraphics{f1}
+\caption{Signal of pre-term labour (early)}
+\end{figure}
+\begin{figure}[H]
+\includegraphics{f2}
+\caption{Signal of pre-term labour (later)}
+\end{figure}
+\begin{figure}[H]
+\includegraphics{f3}
+\caption{Signal of term labour (early)}
+\end{figure}
+\begin{figure}[H]
+\includegraphics{f4}
+\caption{Signal of term labour (later)}
+\end{figure}
+
+\section {Solution}
+We wrote a MATLAB program which opens 4 records and calculates sample entropy for the signal 3 of each record. Before calculating sample entropy, each signal was digitally filtered using 4-pole digital Butterworth filter with a double-pass filtering scheme. The band-pass cut-off frequency was from 0.3Hz to 4Hz.
+We took one record from each group  (PE: pre-term  labour, recorded before 26th week of gestation; PL: pre-term labour, recorded during or after 26th week of gestation; TE: term labour, recorded before 26th week of gestation; and TL: term labour, recorded during or after 26th week of gestation). 
+The program calculates sample entropy using the pattern length of m=3 and pattern match margin of r=0.15. 
+
 
 \section {Results}
 
